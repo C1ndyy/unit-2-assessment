@@ -1,0 +1,18 @@
+const Todo = require("../data/todos");
+let todosArray = Todo.todos;
+
+// console.log(Todo.todos);
+function index(req, res) {
+  res.render("index", { todos: todosArray });
+}
+
+function createTodo(req, res) {
+  req.body.done = false;
+  todosArray.push(req.body);
+  console.log(todosArray);
+  res.redirect("/");
+}
+module.exports = {
+  index,
+  create: createTodo,
+};
